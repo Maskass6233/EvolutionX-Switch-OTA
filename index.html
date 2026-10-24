@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolution X 15.0 Switch (Pixel Tablet Edition) — Projet par Natsuerse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #050811;
+      --bg-card: rgba(13, 20, 38, 0.72);
+      --bg-card-hover: rgba(19, 30, 56, 0.88);
+      --evo-blue: #0066ff;
+      --evo-cyan: #00d4ff;
+      --evo-indigo: #6366f1;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(56, 189, 248, 0.16);
+      --border-glow: rgba(0, 102, 255, 0.55);
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(0, 102, 255, 0.22), transparent 38%),
+        radial-gradient(circle at 85% 20%, rgba(0, 212, 255, 0.14), transparent 35%),
+        radial-gradient(circle at 50% 85%, rgba(99, 102, 241, 0.15), transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(5, 8, 17, 0.8);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .evo-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--evo-blue), var(--evo-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #fff;
+      box-shadow: 0 0 24px rgba(0, 102, 255, 0.55);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--evo-cyan);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .btn-nav {
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--evo-blue), #0052cc);
+      color: #fff !important;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 0 4px 18px rgba(0, 102, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 212, 255, 0.5);
+    }
+
+    /* Main Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4.5rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-badges, .hero-actions {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .badge-owner {
+      background: rgba(0, 102, 255, 0.18);
+      border: 1px solid rgba(0, 212, 255, 0.45);
+      color: #7dd3fc;
+      box-shadow: 0 0 20px rgba(0, 102, 255, 0.25);
+    }
+
+    .badge-android {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--evo-cyan);
+      box-shadow: 0 0 8px var(--evo-cyan);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(1.2); }
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.35rem, 4.5vw, 3.65rem);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 45%, #0066ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .owner-highlight {
+      color: var(--evo-cyan);
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 212, 255, 0.4);
+      text-underline-offset: 6px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.08rem;
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.95rem 1.75rem;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--evo-blue), #0099ff);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0, 102, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.22s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0, 212, 255, 0.6);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.55rem;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: var(--evo-cyan);
+    }
+
+    /* Interactive Switch Tablet Mockup */
+    .switch-mockup {
+      background: linear-gradient(145deg, #111827, #070b14);
+      border-radius: 28px;
+      padding: 14px;
+      border: 2px solid rgba(56, 189, 248, 0.3);
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.75),
+        0 0 50px rgba(0, 102, 255, 0.28);
+      position: relative;
+    }
+
+    .switch-screen {
+      background: linear-gradient(135deg, #06122e 0%, #091e4a 45%, #040d21 100%);
+      border-radius: 18px;
+      padding: 1.5rem;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .switch-screen::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.28), transparent 70%);
+      top: -60px;
+      right: -60px;
+      pointer-events: none;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      opacity: 0.9;
+    }
+
+    .screen-center {
+      margin: 1.3rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .pixel-clock {
+      text-align: left;
+    }
+
+    .pixel-clock .time {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.1rem;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: #fff;
+    }
+
+    .pixel-clock .date {
+      font-size: 0.82rem;
+      color: #93c5fd;
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    .about-widget {
+      background: rgba(5, 10, 24, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      border-radius: 16px;
+      padding: 0.95rem;
+      text-align: left;
+      font-size: 0.76rem;
+    }
+
+    .about-widget .widget-title {
+      color: var(--evo-cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.68rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .about-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.22rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .about-row:last-child {
+      border-bottom: none;
+    }
+
+    .about-label {
+      color: var(--text-muted);
+    }
+
+    .about-val {
+      color: #fff;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+    }
+
+    .pixel-taskbar {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .taskbar-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-tag {
+      color: var(--evo-cyan);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    /* Maintainer Banner Card */
+    .maintainer-card {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.16), rgba(13, 20, 38, 0.9));
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 2.25rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 820px) {
+      .maintainer-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .maintainer-avatar {
+        margin: 0 auto;
+      }
+    }
+
+    .maintainer-avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--evo-blue), var(--evo-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 30px rgba(0, 102, 255, 0.6);
+    }
+
+    .maintainer-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.55rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .verified-pill {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      color: #34d399;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .maintainer-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cert-box {
+      background: rgba(5, 8, 17, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.55rem 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: #93c5fd;
+      word-break: break-all;
+    }
+
+    /* Live OTA & Download Center */
+    .download-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 860px) {
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dl-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.22s, border-color 0.22s;
+    }
+
+    .dl-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--evo-cyan);
+    }
+
+    .dl-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .dl-type {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--evo-cyan);
+      margin-bottom: 0.3rem;
+    }
+
+    .dl-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .dl-size {
+      background: rgba(0, 102, 255, 0.2);
+      border: 1px solid rgba(0, 102, 255, 0.45);
+      color: #93c5fd;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .dl-meta {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .dl-meta li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .dl-meta code {
+      font-family: 'JetBrains Mono', monospace;
+      color: #e2e8f0;
+      font-size: 0.78rem;
+    }
+
+    .sha-box {
+      background: rgba(5, 8, 17, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.65rem 0.85rem;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .sha-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      color: #94a3b8;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .btn-copy {
+      background: rgba(0, 102, 255, 0.25);
+      border: 1px solid rgba(0, 212, 255, 0.4);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: var(--evo-blue);
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(0, 212, 255, 0.4);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(0, 102, 255, 0.18);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .feature-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.18rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Steps Section */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--evo-cyan);
+      background: rgba(0, 212, 255, 0.12);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 0.9rem;
+    }
+
+    .step-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    footer strong {
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="evo-logo">E</div>
+        <div class="brand-text">
+          <div class="brand-title">Evolution X <span style="color:var(--evo-cyan);">Switch</span></div>
+          <div class="brand-sub">By Natsuerse • #KeepEvolving</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#maintainer">Maintainer</a></li>
+        <li><a href="#downloads">Téléchargements & OTA</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#install">Installation</a></li>
+      </ul>
+      <a href="https://github.com/Maskass6233/EvolutionX-Switch-OTA/releases" target="_blank" rel="noopener" class="btn-nav">
+        Dépôt GitHub Officiel ↗
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Hero -->
+    <header class="hero">
+      <div>
+        <div class="hero-badges">
+          <span class="badge badge-owner">
+            <span class="badge-dot"></span>
+            Projet Officiel de Natsuerse
+          </span>
+          <span class="badge badge-android">Android 15 • Evolution X 10.6</span>
+        </div>
+        <h1>
+          <span class="gradient-text">Evolution X 15.0</span><br />
+          Pixel Tablet sur Switch par <span class="owner-highlight">Natsuerse</span>
+        </h1>
+        <p>
+          Transformez votre <strong>Nintendo Switch v1 (<code>nx_tab</code>)</strong> en véritable <strong>Google Pixel Tablet (<code>tangorpro</code>)</strong> sous Android 15. Une ROM conçue, signée cryptographiquement et maintenue par <strong>Natsuerse</strong> avec mises à jour OTA intégrées.
+        </p>
+        <div class="hero-actions">
+          <a href="#downloads" class="btn-primary">
+            ⬇ Télécharger la ROM & OTA
+          </a>
+          <a href="https://github.com/Maskass6233/EvolutionX-Switch-OTA" target="_blank" rel="noopener" class="btn-secondary">
+            Voir le serveur OTA GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Switch Pixel Tablet Mockup -->
+      <div class="switch-mockup">
+        <div class="switch-screen">
+          <div class="status-bar">
+            <span>Evolution X • Pixel Tablet</span>
+            <span>Wi-Fi 5G • 100% 🔋</span>
+          </div>
+
+          <div class="screen-center">
+            <div class="pixel-clock">
+              <div class="time" id="live-clock">10:42</div>
+              <div class="date">Android 15 • VanillaIceCream</div>
+            </div>
+
+            <div class="about-widget">
+              <div class="widget-title">À propos de la tablette</div>
+              <div class="about-row">
+                <span class="about-label">Maintainer</span>
+                <span class="about-val" style="color:var(--evo-cyan);">Natsuerse</span>
+              </div>
+              <div class="about-row">
+                <span class="about-label">Modèle</span>
+                <span class="about-val">Pixel Tablet</span>
+              </div>
+              <div class="about-row">
+                <span class="about-label">Appareil</span>
+                <span class="about-val">nx_tab (Switch)</span>
+              </div>
+              <div class="about-row">
+                <span class="about-label">Build</span>
+                <span class="about-val">v10.6-OFFICIAL</span>
+              </div>
+              <div class="about-row">
+                <span class="about-label">Clé OTA</span>
+                <span class="about-val" style="color:var(--success);">CN=Natsuerse ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pixel-taskbar">
+            <div class="taskbar-icon">🌐</div>
+            <div class="taskbar-icon">🎮</div>
+            <div class="taskbar-icon">🎨</div>
+            <div class="taskbar-icon">⚙️</div>
+            <div class="taskbar-icon">🔄</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Maintainer Ownership Section -->
+    <section id="maintainer">
+      <div class="maintainer-card">
+        <div class="maintainer-avatar">N</div>
+        <div class="maintainer-info">
+          <h3>
+            Projet créé & maintenu par Natsuerse
+            <span class="verified-pill">✓ Signature RSA-2048 Protégée</span>
+          </h3>
+          <p>
+            Ce portage hybride <strong>Evolution X 15.0 Pixel Tablet Edition</strong> pour Nintendo Switch est développé et signé exclusivement par <strong>Natsuerse</strong>. Le certificat X.509 de Natsuerse est intégré dans <code>/system/etc/security/otacerts.zip</code> afin de garantir que seules les mises à jour publiées par Natsuerse puissent être installées via l'Updater système.
+          </p>
+          <div class="cert-box">
+            Certificat OTA : Subject: C=FR, O=Natsuerse Official, OU=EvolutionX Switch Maintainer, CN=Natsuerse
+          </div>
+        </div>
+        <div>
+          <a href="https://github.com/Maskass6233/EvolutionX-Switch-OTA/releases" target="_blank" rel="noopener" class="btn-secondary">
+            Profil & Releases ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads & Live OTA Feed -->
+    <section id="downloads">
+      <div class="section-header">
+        <span class="section-tag">Centre de Téléchargement & OTA</span>
+        <h2 class="section-title">Builds Officielles signées par Natsuerse</h2>
+      </div>
+
+      <div class="download-grid">
+        <!-- Card 1: Full ROM -->
+        <div class="dl-card">
+          <div>
+            <div class="dl-card-header">
+              <div>
+                <div class="dl-type">Image Système Complète</div>
+                <div class="dl-title">Evolution X 15.0 — Pixel Tablet Switch</div>
+              </div>
+              <span class="dl-size">2.50 Go</span>
+            </div>
+            <ul class="dl-meta">
+              <li><span>Fichier</span> <code>EvolutionX-15.0-PixelTablet-nx_tab-Switch.zip</code></li>
+              <li><span>Maintainer</span> <code>Natsuerse (Official)</code></li>
+              <li><span>Version Android</span> <code>15 (BP1A.250505.005)</code></li>
+              <li><span>Architecture</span> <code>ARMv8.0-A (Tegra X1 Native)</code></li>
+            </ul>
+            <div class="sha-box">
+              <span class="sha-text">Signé par : CN=Natsuerse (SignApk Whole-File CMS)</span>
+            </div>
+          </div>
+          <a href="https://github.com/Maskass6233/EvolutionX-Switch-OTA/releases" target="_blank" rel="noopener" class="btn-primary" style="justify-content:center;">
+            ⬇ Télécharger la ROM Complète
+          </a>
+        </div>
+
+        <!-- Card 2: Live OTA Patch -->
+        <div class="dl-card">
+          <div>
+            <div class="dl-card-header">
+              <div>
+                <div class="dl-type">Flux OTA Actif (ota.json)</div>
+                <div class="dl-title" id="ota-filename">Natsuerse-Maintainer-OTA-SIM-Fix.zip</div>
+              </div>
+              <span class="dl-size" id="ota-size">766 Ko</span>
+            </div>
+            <ul class="dl-meta">
+              <li><span>Canal OTA</span> <code id="ota-romtype">OFFICIAL (Natsuerse)</code></li>
+              <li><span>Serveur OTA</span> <code>Maskass6233/EvolutionX-Switch-OTA</code></li>
+              <li><span>Correctif SIM / Wi-Fi</span> <code>Inclus (Tablette Wi-Fi Only)</code></li>
+              <li><span>Certificat OTA</span> <code>otacerts.zip (CN=Natsuerse)</code></li>
+            </ul>
+            <div class="sha-box">
+              <span class="sha-text" id="ota-sha">SHA-256 : f0c387c22c656a245c8d054b46b848eb5bab0c5c358c77668cea3d5f21baac5f</span>
+              <button class="btn-copy" onclick="copySha()">Copier SHA-256</button>
+            </div>
+          </div>
+          <a id="ota-url" href="https://github.com/Maskass6233/EvolutionX-Switch-OTA/releases/download/latest/Natsuerse-Maintainer-OTA-SIM-Fix.zip" target="_blank" rel="noopener" class="btn-primary" style="justify-content:center;">
+            ⚡ Télécharger le Patch OTA & SIM Fix
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+      <div class="section-header">
+        <span class="section-tag">Pourquoi cette édition ?</span>
+        <h2 class="section-title">L'expérience Pixel Tablet sur Nintendo Switch</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💎</div>
+          <h4>Interface Pixel Tablet Native</h4>
+          <p>Pixel Launcher grand écran avec barre des tâches persistante, mode écran partagé instantané, Hub Mode (<code>DockSetup</code>) et horloges exclusives Pixel.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h4>Noyau ARMv8.0-A Sans Kernel Panic</h4>
+          <p>Assemblage chirurgical signé par <strong>Natsuerse</strong> combinant les binaires natifs Cortex-A57 de Switchroot avec le système Evolution X 15.0.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📡</div>
+          <h4>Mises à jour OTA en 1 Clic</h4>
+          <p>Recevez directement les nouvelles versions publiées par <strong>Natsuerse</strong> dans <em>Paramètres → Système → Mises à jour du système</em> sur votre Switch.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <h4>GameSpace & Joy-Con Natifs</h4>
+          <p>Inclut l'optimiseur de jeu Evolution X <strong>GameSpace</strong>, les fenêtres flottantes <strong>LMOFreeform</strong>, le support Dock TV HDMI et les Joy-Con.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation Guide -->
+    <section id="install">
+      <div class="section-header">
+        <span class="section-tag">Guide Rapide</span>
+        <h2 class="section-title">Installation & Configuration OTA</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">Étape 01</span>
+          <h4>Flash de la ROM en Recovery</h4>
+          <p>Démarrez dans le Recovery Switchroot (Lineage Recovery / TWRP), faites un <em>Format Data</em> puis flashez <code>EvolutionX-15.0-PixelTablet-nx_tab-Switch.zip</code>.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">Étape 02</span>
+          <h4>Activation OTA & Correctif Wi-Fi</h4>
+          <p>Flashez <code>Natsuerse-Maintainer-OTA-SIM-Fix.zip</code>. Il désactive l'étape Carte SIM, inscrit <strong>Natsuerse</strong> comme Maintainer et active le certificat OTA.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">Étape 03</span>
+          <h4>Mises à jour automatiques</h4>
+          <p>Rendez-vous dans <strong>Paramètres → Système → Mises à jour du système</strong> sur votre Switch pour télécharger et installer les futures mises à jour de Natsuerse.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        <strong>Evolution X 15.0 — Nintendo Switch Pixel Tablet Edition</strong> • Projet créé, signé et maintenu par <strong>Natsuerse</strong>.<br />
+        Basé sur Evolution X 10.6 (<code>tangorpro</code>) & Switchroot LineageOS 22.2 (<code>nx_tab</code>). #KeepEvolving
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Live clock inside Switch mockup
+    function updateClock() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const el = document.getElementById('live-clock');
+      if (el) el.textContent = `${hh}:${mm}`;
+    }
+    updateClock();
+    setInterval(updateClock, 15000);
+
+    // Copy SHA-256 helper
+    let currentSha = "f0c387c22c656a245c8d054b46b848eb5bab0c5c358c77668cea3d5f21baac5f";
+    function copySha() {
+      navigator.clipboard.writeText(currentSha);
+      const btn = document.querySelector('.btn-copy');
+      btn.textContent = "Copié ✓";
+      setTimeout(() => { btn.textContent = "Copier SHA-256"; }, 2000);
+    }
+
+    // Fetch live ota.json from local directory or GitHub repository
+    async function loadLiveOta() {
+      const urls = [
+        './ota.json',
+        'https://raw.githubusercontent.com/Maskass6233/EvolutionX-Switch-OTA/main/ota.json'
+      ];
+      for (const u of urls) {
+        try {
+          const res = await fetch(u, { cache: 'no-store' });
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (data.response && data.response.length > 0) {
+            const item = data.response[0];
+            document.getElementById('ota-filename').textContent = item.filename;
+            document.getElementById('ota-sha').textContent = 'SHA-256 : ' + item.id;
+            currentSha = item.id;
+            document.getElementById('ota-url').href = item.url;
+            const mb = item.size > 1024 * 1024
+              ? (item.size / (1024 * 1024)).toFixed(2) + ' Mo'
+              : Math.round(item.size / 1024) + ' Ko';
+            document.getElementById('ota-size').textContent = mb;
+            break;
+          }
+        } catch (e) {}
+      }
+    }
+    loadLiveOta();
+  </script>
+</body>
+</html>

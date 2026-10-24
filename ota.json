@@ -1,12 +1,12 @@
 {
   "response": [
     {
-      "datetime": 1792799722,
-      "filename": "EvolutionX-15.0-PixelTablet-nx_tab-Switch-Signed-Natsuerse.zip",
-      "id": "da994664ef7c16b9338b983f0c9634d4d8fd2e0ecaf58d0fd19049ca65fe08aa",
+      "datetime": 1792800996,
+      "filename": "Natsuerse-Maintainer-OTA-SIM-Fix.zip",
+      "id": "f0c387c22c656a245c8d054b46b848eb5bab0c5c358c77668cea3d5f21baac5f",
       "romtype": "OFFICIAL",
-      "size": 2657035255,
-      "url": "https://github.com/Natsuerse/EvolutionX-Switch-OTA/releases/download/latest/EvolutionX-15.0-PixelTablet-nx_tab-Switch-Signed-Natsuerse.zip",
+      "size": 766954,
+      "url": "https://github.com/Maskass6233/EvolutionX-Switch-OTA/releases/download/latest/Natsuerse-Maintainer-OTA-SIM-Fix.zip",
       "version": "22.2"
     }
   ]

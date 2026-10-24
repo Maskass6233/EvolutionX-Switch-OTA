@@ -1,6 +1,3 @@
-[README.md](https://github.com/user-attachments/files/33895075/README.md)
-# EvolutionX-Switch-OTA
-A Evolution X rom for Nintendo switch (WIP!)
 <div align="center">
 
 # Evolution X 15.0 — Pixel Tablet Edition
